@@ -7,13 +7,3 @@ image:
 ports:
   - port: 8080
     onOpen: open-preview
-
-
-
-tasks:
-  - before: airflow scheduler
-  - command: echo nitialize the database
-  - init: airflow initdb
-  - command: echo start the web server, default port is 8080
-  - command: airflow webserver -p 8080
-  - command: echo start the scheduler
