@@ -1,0 +1,19 @@
+# The Docker image to run your workspace in. Defaults to gitpod/workspace-full
+image:
+  file: 
+    .gitpod.Dockerfile
+
+tasks:
+  # install from pypi using pip
+  - init: pip install apache-airflow
+  # initialize the database
+  - command: airflow initdb
+  # start the web server, default port is 8080
+  - command: airflow webserver -p 8080
+  # start the scheduler
+  - command: airflow scheduler
+
+# Ports to expose on workspace startup (optional)
+ports:
+  - port: 8080
+    onOpen: open-preview
